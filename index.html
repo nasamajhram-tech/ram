@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Dropdown</title>
+</head>
+<body>
+  <h1>Select an Option</h1>
+  <select id="dropdown">
+    <option value="">Loading...</option>
+  </select>
+
+  <script>
+    // URL of the raw text file on GitHub
+    const fileUrl = 'https://raw.githubusercontent.com/username/repository/branch/filename.txt';
+
+    // Fetch the file content
+    fetch(fileUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        const dropdown = document.getElementById('dropdown');
+        dropdown.innerHTML = ''; // Clear the loading option
+
+        // Split the file content into lines
+        const options = data.split('\n').filter(line => line.trim() !== '');
+
+        // Add each line as an option in the dropdown
+        options.forEach(option => {
+          const opt = document.createElement('option');
+          opt.value = option;
+          opt.textContent = option;
+          dropdown.appendChild(opt);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching the file:', error);
+        const dropdown = document.getElementById('dropdown');
+        dropdown.innerHTML = '<option value="">Error loading options</option>';
+      });
+  </script>
+</body>
+</html>
