@@ -1,6 +1,6 @@
 const API_KEY = "AIzaSyCjWH-e5A0oOC0LMuSI4LK7m-gzudnvj9Y"; // Replace with your API key  
 const PLAYLIST_ID = "PLYazKoZJJto_fOBHijYa1fWwZK7l0SVy5"; // Replace with your playlist ID  
-const MAX_VIDEOS = 20; // Number of videos to fetch (max 50 per request)  
+const MAX_VIDEOS = 5; // Number of videos to fetch (max 50 per request)  
  
 // DOM Elements  
 const playerContainer = document.getElementById("player-container");  
@@ -51,7 +51,8 @@ function initPlayer() {
  
 // YouTube IFrame API callback (required by the API)  
 window.onYouTubeIframeAPIReady = () => {  
-    // Player initialization is handled in fetchPlaylistItems()  
+    // Player initialization is handled in fetchPlaylistItems() 
+fetchPlaylistItems(); 
 }; 
 function renderPlaylistItems() {  
     playlistItemsContainer.innerHTML = ""; // Clear existing content  
