@@ -28,7 +28,7 @@ async function fetchPlaylistItems() {
 }  
  
 // Call the function to load data  
-fetchPlaylistItems(); 
+//fetchPlaylistItems(); 
 function initPlayer() {  
     if (playlistItems.length === 0) return;  
  
@@ -53,6 +53,7 @@ function initPlayer() {
 window.onYouTubeIframeAPIReady = () => {  
     // Player initialization is handled in fetchPlaylistItems() 
 fetchPlaylistItems(); 
+
 }; 
 function renderPlaylistItems() {  
     playlistItemsContainer.innerHTML = ""; // Clear existing content  
